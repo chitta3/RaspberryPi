@@ -40,7 +40,7 @@ if is_config:
     print "graph_title Temperatur (I2C)"
     print "graph_vlabel Temperature(Celsius)"
     print "graph_category sensors"
-    print "graph_ordor BMP180temp ADT7410temp HDC1000temp"
+    print "graph_order BMP180temp ADT7410temp HDC1000temp"
     #print "graph_scale no"
     #print "graph_args -A -Y"
     print "BMP180temp.label BMP180 Temp(C)"
