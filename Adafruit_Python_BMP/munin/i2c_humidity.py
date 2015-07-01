@@ -18,7 +18,7 @@ if is_config:
     print "graph_vlabel percent(%)"
     print "graph_category sensors"
     print "graph_scale no"
-    print "graph_args -A -Y"
+    print "graph_args --upper-limit 100 -l 0"
     print "HDC1000humid.label percent (%)"
 else:
     wiringpi2.wiringPiSetup()

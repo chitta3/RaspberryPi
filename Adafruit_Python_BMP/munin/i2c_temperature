@@ -8,6 +8,10 @@
 import Adafruit_BMP.BMP085 as BMP085
 import sys
 import smbus
+import wiringpi2
+import os
+import struct
+from time import sleep
 
 ADDRESS = 0x48
 CHANNEL = 1
@@ -30,6 +34,26 @@ class ADT7410:
             print str(e)
             return None
 
+class HDC1000:
+    def __init__(self):
+
+    def read_temp(self):
+        try:
+            wiringpi2.wiringPiSetup()
+            i2c = wiringpi2.I2C()
+            dev = i2c.setup(0x40)
+            i2c.writeReg16(dev,0x02,0x10)   # Temp + Hidi 32-bit transfer mode, LSB-MSB inverted, why?
+            i2c.writeReg8(dev,0x00,0x00)    # start conversion.
+            sleep((6350.0 + 6500.0 +  500.0)/1000000.0) # wait for conversion.
+            # LSB-MSB inverted, again...
+            temp = ((struct.unpack('4B', os.read(dev,4)))[0] << 8 | (struct.unpack('4B', os.read(dev,4)))[1])
+            hudi = ((struct.unpack('4B', os.read(dev,4)))[2] << 8 | (struct.unpack('4B', os.read(dev,4)))[3])
+            os.close(dev) #Don't leave the door open.
+            return ( hudi / 65535.0 ) * 100
+        except Exception as e:
+            print str(e)
+            return None
+
 # ===========================================================================
 # Munin Plugin - Temperature
 # ===========================================================================
@@ -45,13 +69,19 @@ if is_config:
     #print "graph_args -A -Y"
     print "BMP180temp.label BMP180 Temp(C)"
     print "ADT7410temp.label ADT7410 Temp(C)"
+    print "HDC1000temp.label HDC1000 Temp(C)"
+
 else:
 # Initialise the BMP085 and use STANDARD mode (default value)
     sensor1 = BMP085.BMP085()
     sensor2 = ADT7410(ADDRESS, CHANNEL)
+    sensor3 = HDC1000()
 
     temp1 = sensor1.read_temperature()
     temp2 = sensor2.readValue()
+    temp3 = sensor3.read_temp()
 #   pressure = sensor.read_pressure()
     print "BMP180temp.value %.2f" % temp1
     print "ADT7410temp.value %.2f" % temp2
+    print "HDC1000temp.value %.2f" % temp3
+
