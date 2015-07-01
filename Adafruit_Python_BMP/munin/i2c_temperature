@@ -50,7 +50,7 @@ else:
     sensor1 = BMP085.BMP085()
     sensor2 = ADT7410(ADDRESS, CHANNEL)
 
-    temp1 = sensor2.read_temperature()
+    temp1 = sensor1.read_temperature()
     temp2 = sensor2.readValue()
 #   pressure = sensor.read_pressure()
     print "BMP180temp.value %.2f" % temp1
