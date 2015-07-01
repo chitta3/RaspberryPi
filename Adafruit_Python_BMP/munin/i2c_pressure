@@ -29,4 +29,4 @@ else:
 
 # Read the current barometric pressure level
     pressure = sensor.read_pressure()
-    print "pressure.value %.4f" % (pressure / 100.0)
+    print "pressure.value %.2f" % (pressure / 100.0)

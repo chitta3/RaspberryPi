@@ -27,4 +27,4 @@ else:
 
     temp = sensor.read_temperature()
 #   pressure = sensor.read_pressure()
-    print "temperature.value %.4f" % temp
+    print "temperature.value %.2f" % temp
