@@ -25,8 +25,8 @@ else:
 # Initialise the BMP085 and use STANDARD mode (default value)
     sensor = BMP085.BMP085()
 
-    temp = sensor.readTemperature()
+    temp = sensor.read_temperature()
 
 # Read the current barometric pressure level
-    pressure = sensor.readPressure()
+    pressure = sensor.read_pressure()
     print "pressure.value %.4f" % (pressure / 100.0)

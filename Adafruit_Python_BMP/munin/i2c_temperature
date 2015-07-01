@@ -25,6 +25,6 @@ else:
 # Initialise the BMP085 and use STANDARD mode (default value)
     sensor = BMP085.BMP085()
 
-    temp = sensor.readTemperature()
-#   pressure = sensor.readPressure()
+    temp = sensor.read_temperature()
+#   pressure = sensor.read_pressure()
     print "temperature.value %.4f" % temp
