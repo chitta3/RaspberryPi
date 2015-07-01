@@ -35,8 +35,6 @@ class ADT7410:
             return None
 
 class HDC1000:
-    def __init__(self):
-
     def read_temp(self):
         try:
             wiringpi2.wiringPiSetup()
