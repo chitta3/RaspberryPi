@@ -82,7 +82,7 @@ if is_config:
     print "graph_order BMP180temp ADT7410temp HDC1000temp"
     #print "graph_scale no"
     #print "graph_args -A -Y"
-    print "BMP180temp.label BMP180 Temp(C)"
+    print "BMP180temp.label BMP180  Temp(C)"
     print "ADT7410temp.label ADT7410 Temp(C)"
     print "HDC1000temp.label HDC1000 Temp(C)"
 
