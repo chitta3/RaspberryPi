@@ -88,7 +88,7 @@ if is_config:
     #print "HDC1000temp.label HDC1000 Temp(C)"
     print "AM2321temp.label AM2321  Temp(C)"
     print "AM2321temp.draw LINE2"
-    print "AM2321temp.colour COLOUR10"
+    print "AM2321temp.colour COLOUR0"
 
 else:
 # Initialise the BMP085 and use STANDARD mode (default value)
