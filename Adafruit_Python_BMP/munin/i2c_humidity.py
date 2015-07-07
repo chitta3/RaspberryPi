@@ -57,6 +57,9 @@ if is_config:
     print "graph_args --upper-limit 100 -l 0"
 #   print "HDC1000humid.label HDC1000 (%)"
     print "AM2321humid.label AM2321  (%)"
+    print "AM2321humid.draw AREA"
+    print "AM2321temp.colour COLOUR16"
+
 else:
 #   sensor = HDC1000()
 #   humid = sensor.read_humid()
