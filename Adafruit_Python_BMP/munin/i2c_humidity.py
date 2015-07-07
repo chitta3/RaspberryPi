@@ -6,6 +6,7 @@ import sys
 import os
 import struct
 from time import sleep
+from tentacle_pi.AM2315 import AM2315
 
 class HDC1000:
     def read_temp(self):
@@ -54,8 +55,12 @@ if is_config:
     print "graph_category sensors"
     print "graph_scale no"
     print "graph_args --upper-limit 100 -l 0"
-    print "HDC1000humid.label percent (%)"
+#   print "HDC1000humid.label HDC1000 (%)"
+    print "AM2321humid.label AM2321  (%)"
 else:
-    sensor = HDC1000()
-    humid = sensor.read_humid()
-    print "HDC1000humid.value %.2f" % humid
+#   sensor = HDC1000()
+#   humid = sensor.read_humid()
+#   print "HDC1000humid.value %.2f" % humid
+    am = AM2315(0x5c, "/dev/i2c-1")
+    temp, humid, crc = am.sense()
+    print "AM2321humid.value %.2f" % humid

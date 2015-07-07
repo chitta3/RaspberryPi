@@ -12,6 +12,7 @@ import wiringpi2
 import os
 import struct
 from time import sleep
+from tentacle_pi.AM2315 import AM2315
 
 ADDRESS = 0x48
 CHANNEL = 1
@@ -79,24 +80,28 @@ if is_config:
     print "graph_title Temperatur (I2C)"
     print "graph_vlabel Temperature(Celsius)"
     print "graph_category sensors"
-    print "graph_order BMP180temp ADT7410temp HDC1000temp"
+    #print "graph_order BMP180temp ADT7410temp HDC1000temp"
     #print "graph_scale no"
     #print "graph_args -A -Y"
-    print "BMP180temp.label BMP180  Temp(C)"
-    print "ADT7410temp.label ADT7410 Temp(C)"
-    print "HDC1000temp.label HDC1000 Temp(C)"
+    #print "BMP180temp.label BMP180  Temp(C)"
+    #print "ADT7410temp.label ADT7410 Temp(C)"
+    #print "HDC1000temp.label HDC1000 Temp(C)"
+    print "AM2321temp.label AM2321  Temp(C)"
 
 else:
 # Initialise the BMP085 and use STANDARD mode (default value)
-    sensor1 = BMP085.BMP085()
-    sensor2 = ADT7410(ADDRESS, CHANNEL)
-    sensor3 = HDC1000()
+#   sensor1 = BMP085.BMP085()
+#   sensor2 = ADT7410(ADDRESS, CHANNEL)
+#   sensor3 = HDC1000()
+    sensor4 = AM2315(0x5c, "/dev/i2c-1")
 
-    temp1 = sensor1.read_temperature()
-    temp2 = sensor2.readValue()
-    temp3 = sensor3.read_temp()
+#   temp1 = sensor1.read_temperature()
+#   temp2 = sensor2.readValue()
+#   temp3 = sensor3.read_temp()
+    temp4, humid, crc = sensor4.sense()
 #   pressure = sensor.read_pressure()
-    print "BMP180temp.value %.2f" % temp1
-    print "ADT7410temp.value %.2f" % temp2
-    print "HDC1000temp.value %.2f" % temp3
+#   print "BMP180temp.value %.2f" % temp1
+#   print "ADT7410temp.value %.2f" % temp2
+#   print "HDC1000temp.value %.2f" % temp3
+    print "AM2321temp.value %.2f" % temp4
 
