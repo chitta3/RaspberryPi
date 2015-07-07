@@ -100,11 +100,14 @@ else:
 #   temp1 = sensor1.read_temperature()
 #   temp2 = sensor2.readValue()
 #   temp3 = sensor3.read_temp()
-    sleep(2)
-    temp4, humid, crc = sensor4.sense()
+    temp = []
+    for i in range(0,3):
+        sleep(1)
+        temp4, humid, crc = sensor4.sense()
+        temp.append(temp4)
 #   pressure = sensor.read_pressure()
 #   print "BMP180temp.value %.2f" % temp1
 #   print "ADT7410temp.value %.2f" % temp2
 #   print "HDC1000temp.value %.2f" % temp3
-    print "AM2321temp.value %.2f" % temp4
+    print "AM2321temp.value %.2f" % (sum(temp) / len(temp))
 
