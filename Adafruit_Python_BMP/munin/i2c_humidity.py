@@ -67,7 +67,7 @@ else:
     am = AM2315(0x5c, "/dev/i2c-1")
     hm = []
     for i in range(0,3):
-        sleep(1)
+        sleep(2)
         temp, humid, crc = am.sense()
         hm.append(humid)
 
