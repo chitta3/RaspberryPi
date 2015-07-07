@@ -100,6 +100,7 @@ else:
 #   temp1 = sensor1.read_temperature()
 #   temp2 = sensor2.readValue()
 #   temp3 = sensor3.read_temp()
+    sleep(2)
     temp4, humid, crc = sensor4.sense()
 #   pressure = sensor.read_pressure()
 #   print "BMP180temp.value %.2f" % temp1
