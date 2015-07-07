@@ -66,9 +66,12 @@ else:
 #   print "HDC1000humid.value %.2f" % humid
     am = AM2315(0x5c, "/dev/i2c-1")
     hm = []
-    for i in range(0,3):
-        sleep(2)
-        temp, humid, crc = am.sense()
+    for i in range(0,5):
+        while True:
+            sleep(1)
+            temp, humid, crc = am.sense()
+            if humid > 5.0:
+                break
         hm.append(humid)
 
     print "AM2321humid.value %.2f" % (sum(hm) / len(hm))
