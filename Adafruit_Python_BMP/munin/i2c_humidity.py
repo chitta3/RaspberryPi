@@ -65,6 +65,10 @@ else:
 #   humid = sensor.read_humid()
 #   print "HDC1000humid.value %.2f" % humid
     am = AM2315(0x5c, "/dev/i2c-1")
-    sleep(2)
-    temp, humid, crc = am.sense()
-    print "AM2321humid.value %.2f" % humid
+    hm = []
+    for i in range(0,3):
+        sleep(1)
+        temp, humid, crc = am.sense()
+        hm.append(humid)
+
+    print "AM2321humid.value %.2f" % (sum(hm) / len(hm))
