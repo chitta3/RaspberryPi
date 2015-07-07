@@ -58,7 +58,7 @@ if is_config:
 #   print "HDC1000humid.label HDC1000 (%)"
     print "AM2321humid.label AM2321  (%)"
     print "AM2321humid.draw AREA"
-    print "AM2321temp.colour COLOUR18"
+    print "AM2321humid.colour COLOUR18"
 
 else:
 #   sensor = HDC1000()
