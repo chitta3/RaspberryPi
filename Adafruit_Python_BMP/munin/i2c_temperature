@@ -102,9 +102,12 @@ else:
 #   temp3 = sensor3.read_temp()
     temp = []
     for i in range(0,3):
-        sleep(2)
-        temp4, humid, crc = sensor4.sense()
-        temp.append(temp4)
+        while True:
+            sleep(2)
+            temp4, humid, crc = sensor4.sense()
+            if temp4 < 5.0:
+                break
+            temp.append(temp4)
 #   pressure = sensor.read_pressure()
 #   print "BMP180temp.value %.2f" % temp1
 #   print "ADT7410temp.value %.2f" % temp2
