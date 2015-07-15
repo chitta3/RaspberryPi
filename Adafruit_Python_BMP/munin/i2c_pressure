@@ -59,6 +59,9 @@ if is_config:
     print "graph_scale no"
     print "graph_args -A -Y"
     print "pressure.label Pressure (hPa)"
+    print "pressure.draw LINE2"
+    print "pressure.colour COLOUR1"
+
 else:
 # Read the current barometric pressure level
     pressure = get_hectopascal()
