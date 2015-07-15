@@ -60,7 +60,7 @@ if is_config:
     print "graph_args -A -Y"
     print "pressure.label Pressure (hPa)"
     print "pressure.draw LINE2"
-    print "pressure.colour COLOUR1"
+    print "pressure.colour COLOUR2"
 
 else:
 # Read the current barometric pressure level
