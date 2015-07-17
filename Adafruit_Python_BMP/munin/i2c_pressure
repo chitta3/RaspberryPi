@@ -4,6 +4,7 @@
 import smbus
 import time
 import sys
+from time import sleep
 
 def convert_coefficient(msb, lsb, total_bits, fractional_bits, zero_pad):
     data = (msb << 8) | lsb
