@@ -64,5 +64,13 @@ if is_config:
 
 else:
 # Read the current barometric pressure level
-    pressure = get_hectopascal()
-    print "pressure.value %.2f" % pressure
+    pressure = []
+    for i in range(0,3):
+        while True:
+            sleep(1)
+            press = get_hectopascal()
+            if press > 800:
+                break
+        pressure.append(press)
+
+    print "pressure.value %.2f" % (sum(pressure) / len(pressure))
